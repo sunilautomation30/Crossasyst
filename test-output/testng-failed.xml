@@ -3,11 +3,11 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="build.com.Automation.testCases.OnlineShoping">
+      <class name="build.com.Automation.testCases.NewUserOnlineOrder">
         <methods>
           <include name="onlineShoping"/>
         </methods>
-      </class> <!-- build.com.Automation.testCases.OnlineShoping -->
+      </class> <!-- build.com.Automation.testCases.NewUserOnlineOrder -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

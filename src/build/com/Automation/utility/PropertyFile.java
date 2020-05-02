@@ -1,21 +1,18 @@
 package build.com.Automation.utility;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+
 import java.io.FileOutputStream;
 import java.util.Properties;
 
 import build.com.Automation.lib.Global;
 
 public class PropertyFile extends Global {
-	
 	      
-    Properties p;
- //   private final String propertyFilePath= "email.properties";
+    
+	public void  getProperty() throws Exception{
 	
-	public static void  property() throws Exception{
-	
-	FileInputStream reader=new FileInputStream("email.properties");      
+	FileInputStream reader=new FileInputStream(".\\configPorperties\\email.properties");      
     Properties p = new Properties();  
     p.load(reader);
     email = p.getProperty("Email");

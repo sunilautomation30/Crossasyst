@@ -1,16 +1,7 @@
 package build.com.Automation.lib;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Properties;
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -23,7 +14,7 @@ import build.com.Automation.utility.PropertyFile;
 
 public class General extends Global {
 
-	// Reusable function
+	// Reusable methods
 	
 	public void openApplication(){
 		
@@ -41,19 +32,21 @@ public class General extends Global {
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		
 		driver.navigate().to(url);
+		System.out.println("Application open successfully");
 		System.out.println(driver.getTitle());
-		driver.findElement(By.linkText(link_signin)).click();
-		
+				
 		}
 	
 	public void closeApplication(){
 		driver.quit();
+		System.out.println("Application Closed");
 		}
 	
 	public void signUP() throws Exception{
-		
+		driver.findElement(By.linkText(link_signin)).click();
 		property = new PropertyFile();
-		property.property();
+		property.getProperty();
+		
 		driver.findElement(By.id(txt_email)).sendKeys(email);
 		driver.findElement(By.id(button_create)).click();
 		driver.findElement(By.id(txt_firstname)).sendKeys(fn);
@@ -67,7 +60,9 @@ public class General extends Global {
 		driver.findElement(By.id(txt_mobile)).sendKeys(mob);
 		driver.findElement(By.id(txt_add_Alias)).sendKeys(add_alias);
 		driver.findElement(By.id(button_submit)).click();
+		System.out.println("New user registered successfully");
 		driver.findElement(By.xpath(button_signout)).click();
+		System.out.println("User signout");
 		
 		}
 	
@@ -75,7 +70,7 @@ public class General extends Global {
 		driver.findElement(By.id(txt_login_email)).sendKeys(email);
 		driver.findElement(By.id(txt_login_password)).sendKeys(pwd);
 		driver.findElement(By.id(button_login_submit)).click();
-		
+		System.out.println("User login successfully");
 		}
 	
 	public void addToCart() throws InterruptedException{
@@ -92,11 +87,13 @@ public class General extends Global {
 		System.out.println("1");
 		driver.findElement(By.xpath(button_plus)).click();
 		driver.findElement(By.xpath(addtocart)).click();
+		System.out.println("Two item added successfully to shopping cart");
 		String MainWindow=driver.getWindowHandle();
 		driver.switchTo().window(MainWindow);
 		Thread.sleep(2000);
 		fTotal = driver.findElement(By.xpath(total)).getText();
 		System.out.println("Final total price:"+fTotal);
+		
 		
 		}
 	
@@ -113,8 +110,9 @@ public class General extends Global {
 		String amount = driver.findElement(By.id(text_amount)).getText();
 		System.out.println(amount);
 		Assert.assertEquals(amount, fTotal);
-		
+		System.out.println("Ordered amount verified");
 		driver.findElement(By.xpath(button_orderSubmit)).click();
+		System.out.println("Ordered submitted successfuly");
 		
 		}
 	public void verifyTotalAmountOrder(){
