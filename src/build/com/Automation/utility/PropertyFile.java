@@ -22,7 +22,7 @@ public class PropertyFile extends Global {
 	email = sEmail.substring(0, sEmail.length()-2) + inum + "@" + email.split("@")[1];
 	reader.close();
 	System.out.println(email);
-	FileOutputStream fos = new FileOutputStream("email.properties");
+	FileOutputStream fos = new FileOutputStream(".\\configPorperties\\email.properties");
 	p.setProperty("Email", email);
 	p.store(fos, null);
 	fos.close();
